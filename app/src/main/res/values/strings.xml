@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">idopontfoglalo</string>
+    <string name="username">Név</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration">Regisztráció</string>
+    <string name="email">Email cím</string>
+    <string name="rePassword">Jelszó újra</string>
+    <string name="back">Vissza</string>
+</resources>

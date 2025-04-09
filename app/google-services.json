@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "67584388927",
+    "project_id": "idopontfoglalo-b53f0",
+    "storage_bucket": "idopontfoglalo-b53f0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67584388927:android:12f6dc572ba021629fad8a",
+        "android_client_info": {
+          "package_name": "com.example.idopontfoglalo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67584388927-c7raek7m1vpfc2rc87fnmfs13ujhnhbm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.idopontfoglalo",
+            "certificate_hash": "b139d5926b1ce06d8d1549fd8c97e11fe9f4df90"
+          }
+        },
+        {
+          "client_id": "67584388927-t4f9nebt1a8ivqm49p7mgomlqjghbid9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlE9c0yV_6_52vjsjoSt-lnhAdjRHEMMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67584388927-t4f9nebt1a8ivqm49p7mgomlqjghbid9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
