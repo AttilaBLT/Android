@@ -1,5 +1,6 @@
 package com.example.idopontfoglalo;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void toMainPage() {
         Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle()); //Animáció, középről jelenik meg az új activity
     }
 
     @Override
