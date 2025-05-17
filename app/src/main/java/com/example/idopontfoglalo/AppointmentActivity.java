@@ -1,8 +1,12 @@
 package com.example.idopontfoglalo;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.MenuItem;
+import android.Manifest;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,12 +20,14 @@ import android.app.TimePickerDialog;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class AppointmentActivity extends AppCompatActivity {
     private EditText editTextDate;
@@ -155,5 +161,27 @@ public class AppointmentActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Hiba: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR}, 100);
+        } else {
+            addEventToCalendar(date.toDate(), serviceName);
+        }
+    }
+    private void addEventToCalendar(Date date, String title) {
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.setTime(date);
+        Calendar endTime = (Calendar) beginTime.clone();
+        endTime.add(Calendar.MINUTE, 30);
+
+        ContentValues event = new ContentValues();
+        event.put(CalendarContract.Events.CALENDAR_ID, 1);
+        event.put(CalendarContract.Events.TITLE, title);
+        event.put(CalendarContract.Events.DTSTART, beginTime.getTimeInMillis());
+        event.put(CalendarContract.Events.DTEND, endTime.getTimeInMillis());
+        event.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
+        event.put(CalendarContract.Events.EVENT_LOCATION, "Szerviz");
+
+        getContentResolver().insert(CalendarContract.Events.CONTENT_URI, event);
     }
 }
