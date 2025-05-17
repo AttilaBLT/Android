@@ -8,15 +8,17 @@ public class Appointment {
     private String serviceId;
     private String status;
     private String userId;
+    private String serviceName;
 
     public Appointment() {}
 
-    public Appointment(Timestamp date, String deviceId, String serviceId, String status, String userId) {
+    public Appointment(Timestamp date, String deviceId, String serviceId, String status, String userId, String serviceName) {
         this.date = date;
         this.deviceId = deviceId;
         this.serviceId = serviceId;
         this.status = status;
         this.userId = userId;
+        this.serviceName = serviceName;
     }
 
     public Timestamp getDate() { return date; }
@@ -33,4 +35,7 @@ public class Appointment {
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
+
+    public String getServiceName() { return serviceName; }
+    public void setServiceName(String serviceName) { this.serviceName = serviceName; }
 }

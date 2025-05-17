@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.idopontfoglalo.models.Appointment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,6 +39,31 @@ public class AppointmentActivity extends AppCompatActivity {
         spinnerDevice = findViewById(R.id.spinnerDevice);
         spinnerService = findViewById(R.id.spinnerService);
         spinnerStatus = findViewById(R.id.spinnerStatus);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.appointmentBooking);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.Profile) {
+                startActivity(new Intent(this, MainPageActivity.class));
+                return true;
+            } else if (id == R.id.Device) {
+                startActivity(new Intent(this, DeviceActivity.class));
+                return true;
+            } else if (id == R.id.ServiceType) {
+                startActivity(new Intent(this, ServiceTypeActivity.class));
+                return true;
+            } else if (id == R.id.appointmentBooking) {
+                return true;
+            } else if (id == R.id.logout) {
+                // Kijelentkezés logika
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+                return true;
+            }
+            return false;
+        });
+
 
         editTextDate.setOnClickListener(v -> showDateTimePicker());
 
@@ -46,7 +72,6 @@ public class AppointmentActivity extends AppCompatActivity {
         statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerStatus.setAdapter(statusAdapter);
 
-        // Eszközök betöltése Firestore-ból
         FirebaseFirestore.getInstance().collection("devices")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -61,7 +86,6 @@ public class AppointmentActivity extends AppCompatActivity {
                     spinnerDevice.setAdapter(deviceAdapter);
                 });
 
-        // Szerviztípusok betöltése Firestore-ból
         FirebaseFirestore.getInstance().collection("serviceTypes")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -75,25 +99,6 @@ public class AppointmentActivity extends AppCompatActivity {
                     serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerService.setAdapter(serviceAdapter);
                 });
-    }
-
-    public void openAppointmentActivity(MenuItem item) {
-        Intent intent = new Intent(this, AppointmentActivity.class);
-        startActivity(intent);
-    }
-
-    public void logout(MenuItem item) {
-        finish();
-    }
-
-    public void openDeviceActivity(MenuItem item) {
-        Intent intent = new Intent(this, DeviceActivity.class);
-        startActivity(intent);
-    }
-
-    public void openServiceTypeActivity(MenuItem item) {
-        Intent intent = new Intent(this, ServiceTypeActivity.class);
-        startActivity(intent);
     }
 
     private void showDateTimePicker() {
@@ -137,8 +142,9 @@ public class AppointmentActivity extends AppCompatActivity {
         String deviceId = deviceIds.get(devicePos);
         String serviceId = serviceIds.get(servicePos);
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String serviceName = spinnerService.getSelectedItem().toString();
 
-        Appointment appointment = new Appointment(date, deviceId, serviceId, status, userId);
+        Appointment appointment = new Appointment(date, deviceId, serviceId, status, userId, serviceName);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("appointments")

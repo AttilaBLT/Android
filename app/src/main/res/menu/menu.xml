@@ -10,25 +10,21 @@
     <item
         android:id="@+id/Device"
         android:title="Eszközök"
-        android:icon="@drawable/baseline_add_to_queue_24"
-        android:onClick="openDeviceActivity"/>
+        android:icon="@drawable/baseline_add_to_queue_24"/>
 
     <item
         android:id="@+id/ServiceType"
         android:title="Szerviztípusok"
-        android:icon="@drawable/baseline_airplay_24"
-        android:onClick="openServiceTypeActivity"/>
+        android:icon="@drawable/baseline_airplay_24"/>
 
     <item
         android:id="@+id/appointmentBooking"
         android:title="Időpont foglalás"
-        android:icon="@drawable/baseline_access_time_24"
-        android:onClick="openAppointmentActivity"/>
+        android:icon="@drawable/baseline_access_time_24"/>
 
     <item
         android:id="@+id/logout"
         android:title="Kijelentkezés"
-        android:icon="@drawable/baseline_logout_24"
-        android:onClick="logout"/>
+        android:icon="@drawable/baseline_logout_24"/>
 
 </menu>
