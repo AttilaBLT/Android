@@ -8,9 +8,22 @@
         android:icon="@drawable/baseline_accessibility_24"/>
 
     <item
+        android:id="@+id/Device"
+        android:title="Eszközök"
+        android:icon="@drawable/baseline_add_to_queue_24"
+        android:onClick="openDeviceActivity"/>
+
+    <item
+        android:id="@+id/ServiceType"
+        android:title="Szerviztípusok"
+        android:icon="@drawable/baseline_airplay_24"
+        android:onClick="openServiceTypeActivity"/>
+
+    <item
         android:id="@+id/appointmentBooking"
         android:title="Időpont foglalás"
-        android:icon="@drawable/baseline_access_time_24"/>
+        android:icon="@drawable/baseline_access_time_24"
+        android:onClick="openAppointmentActivity"/>
 
     <item
         android:id="@+id/logout"

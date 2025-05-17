@@ -27,15 +27,29 @@ public class MainPageActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user != null) {
-            Log.d(TAG, "Authenticated user!");
-        } else {
-            Log.d(TAG, "Unauthenticated user!");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
     }
 
+    public void openAppointmentActivity(MenuItem item) {
+        Intent intent = new Intent(this, AppointmentActivity.class);
+        startActivity(intent);
+    }
+
     public void logout(MenuItem item) {
         finish();
+    }
+
+    public void openDeviceActivity(MenuItem item) {
+        Intent intent = new Intent(this, DeviceActivity.class);
+        startActivity(intent);
+    }
+
+    public void openServiceTypeActivity(MenuItem item) {
+        Intent intent = new Intent(this, ServiceTypeActivity.class);
+        startActivity(intent);
     }
 }

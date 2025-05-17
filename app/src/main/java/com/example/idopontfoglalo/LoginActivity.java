@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -78,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onPause();
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("username", emailET.getText().toString());
+        editor.putString("email", emailET.getText().toString());
         editor.putString("password", passwordET.getText().toString());
         editor.apply();
 

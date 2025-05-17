@@ -27,6 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".AppointmentActivity" />
+        <activity android:name=".DeviceActivity" />
+        <activity android:name=".ServiceTypeActivity" />
+
     </application>
 
 </manifest>

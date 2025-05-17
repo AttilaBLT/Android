@@ -7,4 +7,14 @@
     <string name="email">Email cím</string>
     <string name="rePassword">Jelszó újra</string>
     <string name="back">Vissza</string>
+    <string name="idopont">Foglaljon időpontot</string>
+    <string-array name="device_types">
+        <item>Laptop</item>
+        <item>Telefon</item>
+        <item>Tablet</item>
+    </string-array>
+    <string-array name="appointment_status">
+        <item>folyamatban</item>
+        <item>befejezve</item>
+    </string-array>
 </resources>
