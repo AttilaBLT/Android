@@ -45,7 +45,7 @@ public class DeviceActivity extends AppCompatActivity {
 
             editingDeviceId = device.getId();
             android.widget.Button saveButton = findViewById(R.id.buttonSaveDevice);
-            saveButton.setText("Frissítés");
+            saveButton.setText("Módosítás");
             saveButton.setOnClickListener(v -> updateDevice());
         }
 
